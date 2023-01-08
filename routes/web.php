@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/delete/{id}', [PostController::class, 'delete'])->name('posts.delete');
     });
 });
+
+Route::get('/', [PageController::class, 'index'])->name('allview');
+Route::get('/blog/search', [PageController::class, 'search'])->name('search');
+Route::get('/blog/{id}', [PageController::class, 'show'])->name('singleView');
